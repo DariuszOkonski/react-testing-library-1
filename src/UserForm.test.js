@@ -20,6 +20,7 @@ test('it calls onUserAdd when the form is submitted', () => {
   const nameInput = screen.getByRole('textbox', { name: /name/i });
   const emailInput = screen.getByRole('textbox', { name: /enter email/i });
 
+  // in this case click is responsible for focusing on input element
   user.click(nameInput);
   user.keyboard('jane');
 
