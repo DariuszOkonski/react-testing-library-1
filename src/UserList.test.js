@@ -1,12 +1,20 @@
 import { render, screen, within } from '@testing-library/react';
 import UserList from './UserList';
 
-test('render one row per user', () => {
+function renderComponent() {
   const users = [
     { name: 'jane', email: 'jane@jane.com' },
     { name: 'sam', email: 'sam@sam.com' },
   ];
   render(<UserList users={users} />);
+
+  return {
+    users,
+  };
+}
+
+test('render one row per user', () => {
+  renderComponent();
 
   //find all the rows in the table
   // this line will display testing url, ctrl + click on it
@@ -18,11 +26,12 @@ test('render one row per user', () => {
 });
 
 test('render one row per user version 2', () => {
-  const users = [
-    { name: 'jane', email: 'jane@jane.com' },
-    { name: 'sam', email: 'sam@sam.com' },
-  ];
-  render(<UserList users={users} />);
+  // const users = [
+  //   { name: 'jane', email: 'jane@jane.com' },
+  //   { name: 'sam', email: 'sam@sam.com' },
+  // ];
+  // render(<UserList users={users} />);
+  const { users } = renderComponent();
 
   const { container } = render(<UserList users={users} />);
 
@@ -33,11 +42,12 @@ test('render one row per user version 2', () => {
 });
 
 test('render the email and name of each user', () => {
-  const users = [
-    { name: 'jane', email: 'jane@jane.com' },
-    { name: 'sam', email: 'sam@sam.com' },
-  ];
-  render(<UserList users={users} />);
+  // const users = [
+  //   { name: 'jane', email: 'jane@jane.com' },
+  //   { name: 'sam', email: 'sam@sam.com' },
+  // ];
+  // render(<UserList users={users} />);
+  const { users } = renderComponent();
 
   // screen.logTestingPlaygroundURL();
 
