@@ -17,4 +17,19 @@ test('render one row per user', () => {
   expect(rows).toHaveLength(2);
 });
 
+test('render one row per user version 2', () => {
+  const users = [
+    { name: 'jane', email: 'jane@jane.com' },
+    { name: 'sam', email: 'sam@sam.com' },
+  ];
+  render(<UserList users={users} />);
+
+  const { container } = render(<UserList users={users} />);
+
+  // eslint-disable-next-line
+  const rows = container.querySelectorAll('tbody tr');
+
+  expect(rows).toHaveLength(2);
+});
+
 test('render the email and name of each user', () => {});
